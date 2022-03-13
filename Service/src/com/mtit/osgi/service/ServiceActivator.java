@@ -10,9 +10,12 @@ public class ServiceActivator implements BundleActivator {
 	
 	public void start(BundleContext context) throws Exception {
 		System.out.println("Hospital service has started...");
-		Service service = new ParkingServiceImpl();
 		
+		//ParkingServiceImpl class has registered as a service 
+		Service service = new ParkingServiceImpl();
 		serviceRegistration = context.registerService(Service.class.getName(), service, null);
+		
+		
 	}
 
 	public void stop(BundleContext context) throws Exception {
