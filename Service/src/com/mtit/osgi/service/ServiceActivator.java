@@ -9,18 +9,19 @@ public class ServiceActivator implements BundleActivator {
 	ServiceRegistration serviceRegistration;
 	
 	public void start(BundleContext context) throws Exception {
-		System.out.println("Hospital service has started...");
 		
 		//ParkingServiceImpl class has registered as a service 
-		Service service = new ParkingServiceImpl();
-		serviceRegistration = context.registerService(Service.class.getName(), service, null);
+		Service parkingService = new ParkingServiceImpl();
+		serviceRegistration = context.registerService(Service.class.getName(), parkingService, null);
+		
+		System.out.println("Hospital service has started...");
 		
 		
 	}
 
 	public void stop(BundleContext context) throws Exception {
-		System.out.println("Hospital service has stopped...");
 		serviceRegistration.unregister();
+		System.out.println("Hospital service has stopped...");
 	}
 
 }
